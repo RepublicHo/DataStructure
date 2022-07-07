@@ -5,7 +5,7 @@ package MyBatisStudy;
  * @Date 27/6/2022
  * @Description:
  *
- * 
+ *
  */
 public class test1 {
 }
