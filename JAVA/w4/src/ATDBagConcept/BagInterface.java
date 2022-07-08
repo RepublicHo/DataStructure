@@ -27,6 +27,11 @@ public interface BagInterface<T extends Comparable<T> > {
      * @return
      */
     boolean isEmpty();
+    /**
+     * See whether the bag is full
+     * @return
+     */
+    boolean ifFull();
 
     /**
      * Add a new entry into this bag
@@ -63,6 +68,8 @@ public interface BagInterface<T extends Comparable<T> > {
 
     /**
      * Retrieve all entries in the bag.
+     * We should not directly return the array since
+     * we don't want the client to direct access this private data.
      * @return a newly allocated array of all the entries in the bag.
      * Note: If the bag is empty, the returned array is empty.
      */

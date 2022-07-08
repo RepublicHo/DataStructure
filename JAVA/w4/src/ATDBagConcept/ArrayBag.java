@@ -12,6 +12,10 @@ public class ArrayBag<T extends Comparable<T>> implements BagInterface<T>{
     private int numberOfEntries;
     private static final int DEFAULT_CAPACITY = 25;
 
+    // just in case the constructor does not execute completely.
+    private boolean integrityOK;
+    // give a limit
+    private static final int MAX_CAPACITY = 10000;
 
     public ArrayBag() {
 //        Syntax error: we cannot use a generic type when allocating an array.
@@ -19,12 +23,17 @@ public class ArrayBag<T extends Comparable<T>> implements BagInterface<T>{
 
 //        Syntax error: we cannot assign an array of Object to an array of T.
 //        this.bag = new Object[DEFAULT_CAPACITY];
-
-        this.bag = (T[]) new Object[DEFAULT_CAPACITY];
+        this(DEFAULT_CAPACITY);
     }
 
-    public static void main(String[] args) {
-        ArrayBag<Integer> tempArr = new ArrayBag<>();
+    public ArrayBag(int desiredCapacity){
+        integrityOK = false;
+        if(desiredCapacity <= MAX_CAPACITY){
+            this.bag = (T[]) new Object[desiredCapacity];
+            this.numberOfEntries = 0;
+        }else{
+            throw new IllegalStateException("capacity exceeds allowed maximum. ");
+        }
 
     }
 
@@ -39,8 +48,19 @@ public class ArrayBag<T extends Comparable<T>> implements BagInterface<T>{
     }
 
     @Override
+    public boolean ifFull() {
+        return numberOfEntries >= bag.length;
+    }
+
+    @Override
     public boolean add(T obj) {
-        return false;
+        boolean result = true;
+        if(ifFull()){
+           result = false;
+        }else{
+            bag[numberOfEntries++] = obj;
+        }
+        return result;
     }
 
     @Override
@@ -63,8 +83,19 @@ public class ArrayBag<T extends Comparable<T>> implements BagInterface<T>{
         return false;
     }
 
+
+    // we
     @Override
     public T[] toArray() {
-        return null;
+        T[] result = (T[]) new Object[numberOfEntries];
+        for(int i=0; i<numberOfEntries; i++){
+            result[i] = bag[i];
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ArrayBag<Integer> tempArr = new ArrayBag<>();
+
     }
 }
