@@ -21,6 +21,11 @@ public class SingletonTest03 {
 }
 
 class Singleton6 {
+    /*
+    volatile在这里是需要加的，尽管很难出错
+    instance = new Singleton6();
+    1.
+     */
     private static volatile Singleton6 instance;
     private Singleton6(){}
 
@@ -28,12 +33,21 @@ class Singleton6 {
     public static Singleton6 getInstance(){
         if(instance == null){
             synchronized (Singleton6.class){
+                //只有一个线程可以进入
                 if(instance == null){
                     instance = new Singleton6();
                 }
             }
         }
         return instance;
+    }
+
+    public static void main(String[] args) {
+        for(int i=0; i<1000000; i++){
+            new Thread(()->{
+                System.out.println(Singleton2.getInstance().hashCode());
+            }).start();
+        }
     }
 
 

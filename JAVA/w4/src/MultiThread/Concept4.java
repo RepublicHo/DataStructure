@@ -35,7 +35,7 @@ public class Concept4 extends Thread{
 //        concept4.m2();
 
 
-//        new Thread(concept4::m1, "t1").start();
-//        new Thread(concept4::m2, "t2").start();
+        new Thread(concept4::m1, "t1").start();
+        new Thread(concept4::m2, "t2").start();
     }
 }

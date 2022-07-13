@@ -8,7 +8,6 @@ import java.util.Calendar;
  * @Description: 简单工厂模式 Simple Factory Pattern
  * 由一个工厂对象决定创建出哪一种产品
  *
- *
  * 工厂类负责创建的对象较少
  * 客户端只需要传入工厂类的参数，
  * 对于如何创建对象的逻辑不需要关心
@@ -42,8 +41,6 @@ public class SimpleFactory {
 
     public Course create2(Class clazz) throws Exception {
         try{
-
-
             if(null != clazz){
                 return (Course) clazz.newInstance();
             }

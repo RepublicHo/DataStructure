@@ -12,16 +12,23 @@ package MultiThread;
  * instructions per second, fetching from RAM is not ideal for them.
  * To improve the situation, processors are using tricks like caching.
  *
+ * synchronized 既保证了原子性，又保证了可见性
+ *
+ * Volatile is not needed in sequential program!!!!!
+ * 1. Reads & writes of most primitive variables ae atomic.
+ * these operations aren't interleaved in a single-threaded program.
+ *
+ * Thus, volatile is needed in concurrent Java programs.
  *
  */
 public class Concept3 extends Thread{
-    private /*volatile*/ int count = 100;
+    private volatile int count = 100;
 
     @Override
     public /*synchronized*/ void run() {
         // 加了synchronized就不要加volatile了
         count--;
-        System.out.println(Thread.currentThread().getName() + " 2 count= " + count);
+        System.out.println(Thread.currentThread().getName() + " 2 \t count= " + count);
     }
 
     public static void main(String[] args) {

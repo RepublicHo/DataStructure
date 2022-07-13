@@ -26,7 +26,7 @@ public class Concept2{
 
     public static void m1(){
 //        synchronized (o){ // 任何线程要执行下面的代码，必须拿到o的锁
-            for(int i=0; i<10000; i++){
+            for(int i=0; i<100000; i++){
                 count--;
                 System.out.println(Thread.currentThread().getName() + " 1 count= " + count);
             }
@@ -35,15 +35,16 @@ public class Concept2{
     }
 
     public static void m2(){
-        for(int i=0; i<10000; i++){
-            count--;
+        for(int i=0; i<100000; i++){
+            count++;
             System.out.println(Thread.currentThread().getName() + " 2 count= " + count);
         }
     }
 
     public static void main(String[] args) {
 
-
+        new Thread(Concept2::m1).start();
+        new Thread(Concept2::m2).start();
     }
 
 

@@ -6,7 +6,7 @@ package DesignPattern;
  * @Description: Singleton Pattern
  *
  * Primary purpose:
- * To restrict the limit of the numbe rof object creation to only one.
+ * To restrict the limit of the number of object creation to only one.
  * so that
  * 即保证类的实例化对象仅有一个，并且提供一个访问它的全局访问点
  *

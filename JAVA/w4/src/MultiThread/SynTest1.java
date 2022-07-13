@@ -31,8 +31,6 @@ package MultiThread;
  * Static Synchronization
  *
  * 2.2 Cooperation.  (Inter Thread Communication in java)
- *
- *
  */
 public class SynTest1 {
 

@@ -35,7 +35,7 @@ public class Concept1 {
 
     static void testJoin(){
         Thread t1 = new Thread(()->{
-            for(int i=0; i<100; i++){
+            for(int i=0; i<10; i++){
                 System.out.println("A"+i);
                 try{
                     Thread.sleep(500);
@@ -46,17 +46,22 @@ public class Concept1 {
         });
 
         Thread t2 = new Thread(()->{
-           try {
-               t1.join(); // 用于等待另一个线程的结束
-           } catch (InterruptedException e) {
-               e.printStackTrace();
-           }
+//           try {
+//               t1.join(); // 用于等待另一个线程的结束
+               System.out.println("Hello from t2");
+//           } catch (InterruptedException e) {
+//               e.printStackTrace();
+//           }
         });
+
+        t1.start();
+        t2.start();
+
     }
 
     public static void main(String[] args) {
 
-
+        testJoin();
 //        new MyThread().start(); // 调用的是start不是run
 //        new Thread(new MyRun()).start(); // 跟Thread不一样
 //        new Thread(() ->{
