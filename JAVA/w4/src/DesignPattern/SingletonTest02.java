@@ -6,6 +6,16 @@ package DesignPattern;
  * @Description: 懒汉式
  */
 public class SingletonTest02 {
+    public static void main(String[] args) {
+        for(int i=0; i<100; i++){
+            new Thread(()->{
+                System.out.println(Singleton3.getInstance().hashCode());
+            }).start();
+        }
+
+
+
+    }
 
 }
 
@@ -22,6 +32,11 @@ class Singleton3 {
     // 在实际开发中，不会使用这种方式
     public static Singleton3 getInstance(){
         if(instance == null){
+            try{
+                Thread.sleep(1);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }
             instance = new Singleton3();
         }
 
@@ -35,6 +50,7 @@ class Singleton4{
     private static Singleton4 instance;
     private Singleton4(){}
 
+    // 加入synchronized
     // 效率低 每一次都要同步 效率太低
     // 实际开发中不推荐
     public static synchronized Singleton4 getInstance(){
@@ -63,4 +79,6 @@ class Singleton5 {
         }
         return instance;
     }
+
+
 }

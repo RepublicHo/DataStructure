@@ -14,6 +14,7 @@ package DesignPattern;
  * Prototype patterns are required, when object creation is time consuming,
  * and costly operation, so we create objects with the existing object itself.
  *
+ * 浅拷贝
  */
 public class PrototypePattern {
 }

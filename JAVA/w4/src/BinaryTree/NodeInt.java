@@ -12,4 +12,8 @@ public class NodeInt {
         value = item;
         left = right = null;
     }
+
+    int getValue(){
+        return value;
+    }
 }

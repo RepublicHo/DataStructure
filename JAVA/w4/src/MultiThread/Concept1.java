@@ -46,12 +46,12 @@ public class Concept1 {
         });
 
         Thread t2 = new Thread(()->{
-//           try {
-//               t1.join(); // 用于等待另一个线程的结束
+           try {
+               t1.join(); // 用于等待另一个线程的结束
                System.out.println("Hello from t2");
-//           } catch (InterruptedException e) {
-//               e.printStackTrace();
-//           }
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           }
         });
 
         t1.start();
@@ -61,9 +61,9 @@ public class Concept1 {
 
     public static void main(String[] args) {
 
-        testJoin();
-//        new MyThread().start(); // 调用的是start不是run
-//        new Thread(new MyRun()).start(); // 跟Thread不一样
+//        testJoin();
+        new MyThread().start(); // 调用的是start不是run
+        new Thread(new MyRun()).start(); // 跟Thread不一样
 //        new Thread(() ->{
 //            System.out.println("Hello World from 3");
 //        }).start(); // Lambda

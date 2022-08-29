@@ -13,9 +13,43 @@ package BinaryTree;
  *
  * AVL tree is a self-balancing Binary Search Tree where the difference
  * between heights of left and right subtrees cannot be more than one for
- * all nodes.
+ * all nodes. As such, it adheres to the same rules as a normal binary
+ * search tree, where nodes in the left subtree are less than the root and nodes in
+ * the right subtree are greater.
  *
+ * AVL tree ensures that the insert, find and delete operations are always performed
+ * in O(logn) time.
  *
+ *  https://github.com/isaacmast/AVLTree
  */
 public class AVLTree {
+    // declare instance variable
+    private NodeInt root;
+    // Constructs an empty AVL tree.
+    public AVLTree(){
+        this.root = null;
+    }
+
+    /**
+     * Construct an AVL tree, setting root to a new Node
+     * that contains the int value.
+     * @param data
+     */
+    public AVLTree(int data){
+        this.root = new NodeInt(data);
+    }
+
+    public NodeInt getRoot(){
+        return this.root;
+    }
+
+    public void preOrder(NodeInt current){
+        if(current == null){
+            System.out.println("null");
+        }else{
+            System.out.println();
+        }
+    }
+
+
 }

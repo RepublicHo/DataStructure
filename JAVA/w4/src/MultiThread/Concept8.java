@@ -21,7 +21,11 @@ package MultiThread;
  */
 public class Concept8 {
     private static int number;
-    private static boolean ready;
+    private static /*volatile*/ boolean ready;
+    /*
+    “捎带同步（piggybacking on synchronization）”，
+    即，没有特意为result变量的读写设置同步，而是利用了其他同步动作时“捎带”的效果
+     */
 
     private static class Reader extends Thread{
         @Override
@@ -42,17 +46,22 @@ public class Concept8 {
         We may expect this program to simply print 42 after a
         short delay. However, the delay may be much longer, or even
         hang forever, or even print 0.
-
+    The details of initialization:
+    1. 给对象申请内存,
+    2. 给对象的成员变量初始化
+    3. 把内容赋值给instance
         The case of these anomalies反常现象 is the lack of
         proper memory visibility and reordering.
          */
-        new Reader().start();
-//        new Thread(()->{
-//            number = 42;
-//            ready = true;
-//        }).start();
+        for(int i=0; i<10000; i++){
+            new Reader().start();
+    //        new Thread(()->{
+    //            number = 42;
+    //            ready = true;
+    //        }).start();
 
-        number = 42;
-        ready = true;
+            number = 42;
+            ready = true;
+        }
     }
 }

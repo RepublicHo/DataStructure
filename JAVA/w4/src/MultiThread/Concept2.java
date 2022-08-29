@@ -18,26 +18,28 @@ package MultiThread;
  * the operation thread-safe.
  *
  * A piece of logic, marked with synchronized becomes a synchronized
- * block, allowing only thread to execute at a time.
+ * block, allowing only a thread to execute at a time.
  */
 public class Concept2{
     private static int count = 10000;
     private static Object o =new Object();
 
     public static void m1(){
-//        synchronized (o){ // 任何线程要执行下面的代码，必须拿到o的锁
+        synchronized (o){ // 任何线程要执行下面的代码，必须拿到o的锁
             for(int i=0; i<100000; i++){
                 count--;
                 System.out.println(Thread.currentThread().getName() + " 1 count= " + count);
             }
 
-//        }
+        }
     }
 
     public static void m2(){
-        for(int i=0; i<100000; i++){
-            count++;
-            System.out.println(Thread.currentThread().getName() + " 2 count= " + count);
+        synchronized (o){
+            for(int i=0; i<100000; i++){
+                count++;
+                System.out.println(Thread.currentThread().getName() + " 2 count= " + count);
+            }
         }
     }
 

@@ -9,6 +9,7 @@ package DesignPattern;
  * 直到有对象处理这个请求为止
  */
 public class CoRP {
+
 }
 
 abstract class Handler{

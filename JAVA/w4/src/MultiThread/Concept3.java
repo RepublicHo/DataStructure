@@ -22,7 +22,7 @@ package MultiThread;
  *
  */
 public class Concept3 extends Thread{
-    private volatile int count = 100;
+    private /*volatile*/ int count = 100;
 
     @Override
     public /*synchronized*/ void run() {

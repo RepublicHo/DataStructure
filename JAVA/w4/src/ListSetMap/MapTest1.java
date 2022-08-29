@@ -1,4 +1,4 @@
-package Collection;
+package ListSetMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,9 @@ import java.util.Map;
 /**
  * @Author Anthony Z.
  * @Date 29/5/2022
- * @Description:
+ * @Description: map 是独立的合集
+ * map不像上边两种集合那个用的广泛
+ * 不过在servlet 和jsp中 map可是绝对的重中之重 页面之间传值全靠map
  * Map: 双列数据，存储Key-value数据
  *
  * HashMap: 作为Map的主要实现类，线程不安全，效率高
@@ -28,7 +30,7 @@ import java.util.Map;
  * 1. HashMap的底层实现原理
  * 2. HashMap和 HashTable的异同
  */
-public class MapTest {
+public class MapTest1 {
     public void test1(){
         Map<Integer, String> map = new HashMap();
         map.put(2, "zg");

@@ -5,7 +5,8 @@ import java.util.concurrent.TimeUnit;
 /**
  * @Author Anthony Z.
  * @Date 12/7/2022
- * @Description:
+ * @Description: 可重入属性
+ * https://www.zhihu.com/question/23284564
  */
 public class Concept5 {
     synchronized void m(){
@@ -13,7 +14,7 @@ public class Concept5 {
 
         try{
 
-            TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(4);
         }catch (InterruptedException e){
             e.printStackTrace();
         }

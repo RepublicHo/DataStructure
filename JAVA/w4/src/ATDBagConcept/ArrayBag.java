@@ -35,6 +35,8 @@ public class ArrayBag<T extends Comparable<T>> implements BagInterface<T>{
             throw new IllegalStateException("capacity exceeds allowed maximum. ");
         }
 
+        Math.sqrt(2);
+
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
  * @Author Anthony Z.
  * @Date 12/7/2022
  * @Description: Volatile ensures the changes to a variable
- * 1. 保证线程可见性 always consistent visible to other threads atomically
+ * 1. 保证线程可见性 consistently visible to other threads atomically
  * 2. 禁止指令重排序 volatiles reads/writes cannot be reordered.
  * which is, reads & writes go directly to main memory (not registers/cache)
  * to avoid read/write conflicts on java fields storing shared mutable data.
@@ -20,11 +20,14 @@ import java.util.concurrent.TimeUnit;
  * 2. visibility
  * 3. ordering
  *
+ * 看Singleton的double check
  */
 public class Concept7 {
-    /*volatile*/ boolean running = true;
+    boolean running = true;
+    int num = 23;
     void m(){
         System.out.println("m starts");
+        System.out.println(num);
         while(running){
 //            try{
 //                TimeUnit.MILLISECONDS.sleep(10);
@@ -32,6 +35,7 @@ public class Concept7 {
 //                e.printStackTrace();
 //            }
         }
+        System.out.println(num);
         System.out.println("m ends");
     }
 
@@ -45,5 +49,6 @@ public class Concept7 {
             e.printStackTrace();
         }
         concept7.running = false;
+        concept7.num = 2;
     }
 }

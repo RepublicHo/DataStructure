@@ -28,8 +28,6 @@ public class IteratorTest {
         System.out.println(ifContain);
         System.out.println(coll.contains(1212121));
 
-
-
     }
 }
 
